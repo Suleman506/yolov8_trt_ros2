@@ -8,7 +8,7 @@ Yolov8 Tensorrt with ros2 support. Tested with Jetson Orion Nano Jetpack 5.1.2
     * TensorRT 8.5+
     * OpenCV 4.5+
     * Python 3.8
-    * ROS 2 Foxy/Humble (Optional)\
+    * ROS 2 Foxy/Humble (Optional)
 
 If all the above mentioned required are satisfied proceed with environment setup.
 Download the repository at home directory.
@@ -29,14 +29,14 @@ source dl_dep/bin/activate
 ```
 git clone https://github.com/ultralytics/ultralytics.git
 wget https://github.com/ultralytics/assets/releases/download/v8.1.0/yolov8n.pt
-cp ~/yolov8_txt_ros2/gen_wts.py ~/ultralytics
+cp ~/yolov8_trt_ros2/gen_wts.py ~/ultralytics
 mv yolov8n.pt  ~/ultralytics
 cd ~/ultralytics
 //copy weights to this folder from official ultralytics repository
 python3 gen_wts.py -w yolov8n.pt -o yolov8n.wts -t detect
 // a file 'yolov8n.wts' will be generated.
 ```
-3. Now build yolov8_trt_ros2 and serialize weights to tensort engine.
+3. Build yolov8_trt_ros2 and serialize weights to tensort engine.
 ```
 cd ~/yolov8_trt_ros2
 // update kNumClass in config.h if your model is trained on custom dataset
@@ -51,11 +51,18 @@ sudo ./yolov8_det -s yolov8n.wts yolov8n.engine n
 //Custom yolov8 models can also be used in the same way.
 ```
 4. Inference with camera or ROS 2 image topic (humble/foxy).
-Before inference make sure to change the paths (engine_file_path, library) in scripts infer.py & infer_ros.py. Execute the scripts below for inference
+Before inference make sure to change the paths (engine_file_path, library) and camera topics in scripts infer.py & infer_ros.py. Execute the scripts below for inference.\
+`engine_file_path = "/home/{$USER}/yolov8_trt_ros2/build/yolov8s.engine"`\
+`library = "/home/{$USER}/yolov8_trt_ros2/build/libmyplugins.so"`\
+Change {$USER} to approprite host name.
+
 ```
+cd ~/yolov8_trt_ros2
 // Camera
 python3 infer.py
 //ROS 2
 python3 infer_ros.py
   // Make sure to change weights and the camera topic.
 ```
+After execution of the inference script opencv window will appear showing the detections. Write "deactivate" to close the python virtual environment. For reusing the model activate the environment again and run the inference script only as setup is already complete.
+
