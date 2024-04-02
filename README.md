@@ -36,7 +36,7 @@ cd ~/ultralytics
 python3 gen_wts.py -w yolov8n.pt -o yolov8n.wts -t detect
 // a file 'yolov8n.wts' will be generated.
 ```
-2. Now build yolov8_trt_ros2 and serialize weights to tensort engine.
+3. Now build yolov8_trt_ros2 and serialize weights to tensort engine.
 ```
 cd ~/yolov8_trt_ros2
 // update kNumClass in config.h if your model is trained on custom dataset
