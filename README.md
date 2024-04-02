@@ -31,4 +31,4 @@ sudo ./yolov8_det -d yolov8n.engine ../images g //gpu postprocess
 python3 infer.py
 //ROS 2
 python3 infer_ros.py
-  // Make sure to change the camera topic.
+  // Make sure to change weights and the camera topic.
