@@ -76,5 +76,5 @@ python3 yolo_sub.py
 5. Results\
 \
 ![alt text](https://github.com/sulemank137/yolov8_trt_ros2/blob/525a0636d1fa51f37355d43aea834e9980cedc10/images/yolov8_sub.png)\
-
+\
 6. For weights trained and converted with custom data, also modify the class labels in script "yolov8_det_vid.py". The variable acountable for class labels is `self.categories` (line 83). 
