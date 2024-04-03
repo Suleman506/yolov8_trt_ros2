@@ -65,4 +65,12 @@ python3 infer_ros.py
   // Make sure to change weights and the camera topic.
 ```
 After execution of the inference script opencv window will appear showing the detections. Write "deactivate" to close the python virtual environment. For reusing the model activate the environment again and run the inference script only as setup is already complete.
+Additionally, if you want to publish detection data (class label, score and bbox) along with output image use the following script instead of "infer_ros.py".
+```
+python3 yolo_pub.py
+```
+The detections will be published as ROS 2 topic named `/yolov8/result`, subscribe the detections data and parse using the following script.
+```
+python3 yolo_sub.py
+```
 
