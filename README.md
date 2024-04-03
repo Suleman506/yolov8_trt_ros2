@@ -73,4 +73,6 @@ The detections will be published as ROS 2 topic named `/yolov8/result`, subscrib
 ```
 python3 yolo_sub.py
 ```
-
+5. Results\
+\
+![alt text](https://github.com/sulemank137/yolov8_trt_ros2/blob/525a0636d1fa51f37355d43aea834e9980cedc10/images/yolov8_sub.png)
